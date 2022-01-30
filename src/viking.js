@@ -77,19 +77,25 @@ constructor(vikingArmy,saxonArmy){
     this.saxonArmy.push(saxon)
   }
   vikingAttack(){
-    const i = Math.floor(Math.random() * this.saxonArmy.length)
-    const j = Math.floor(Math.random() * this.vikingArmy.length)
-    const randomSaxon = this.saxonArmy[i]
-    const randomViking = this.vikingArmy[j]
-    randomSaxon.receiveDamage(randomViking.strength) 
-    randomSaxon.receiveDamage(randomViking.strength) 
-    ///tbe
+    const i = Math.floor(Math.random() * this.saxonArmy.length)  
+    let randomVikingStrength = this.vikingArmy[i].strength
+    this.saxonArmy[i].receiveDamage(randomVikingStrength)
 
+    if (randomViking.health <= 0){
+      randomViking.splice(i,1)
+    }
     } 
     saxonAttack(){
-    const randomViking = Math.floor(Math.random() * this.vikingArmy.length)
-    const randomSaxon = Math.floor(Math.random() * this.saxonArmy.length)
-  
+     
+    const j = Math.floor(Math.random() * this.vikingArmy.length)
+    const randomSaxonStrength = this.saxonArmy[j].strength
+    this.vikingArmy[j].receiveDamage(randomSaxonStrength)
+
+    if (randomViking.health <= 0){
+      randomViking.splice(0,1)
+
+    
+    }
    } 
   }
 
